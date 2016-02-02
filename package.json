@@ -1,0 +1,15 @@
+{
+  "name": "Elliptical.Mvc",
+  "version": "0.9.1",
+  "description": "Asp.Net MVC class library for integration with elliptical front-end technologies",
+  "main": "Elliptical.Mvc.sln",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RevStack/Elliptical.Mvc.git"
+  },
+  "author": "S. Francis",
+  "license": "MIT"
+}
