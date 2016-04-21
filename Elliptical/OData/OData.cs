@@ -225,16 +225,34 @@ namespace Elliptical.Mvc
                     str += (checksum > 0) ? " and endswith(toupper(" + prop + "),toupper('" + value + "'))" : "endswith(toupper(" + prop + "),toupper('" + value + "'))";
                     checksum++;
                 }
+                else if(key.IndexOf("eq_")==0)
+                {
+                    prop = key.Substring(3);
+                    str += (checksum > 0) ? " and " + prop + " eq " + value : prop + " eq " + value;
+                    checksum++;
+                }
                 else if (key.IndexOf("eql_") == 0)
                 {
                     prop = key.Substring(4);
-                    str += (checksum > 0) ? " and tolower(" + key + ") eq tolower('" + value + "')" : "tolower(" + key + ") eq tolower('" + value + "')";
+                    str += (checksum > 0) ? " and tolower(" + prop + ") eq tolower('" + value + "')" : "tolower(" + prop + ") eq tolower('" + value + "')";
                     checksum++;
                 }
                 else if (key.IndexOf("equ_") == 0)
                 {
                     prop = key.Substring(4);
-                    str += (checksum > 0) ? " and toupper(" + key + ") eq toupper('" + value + "')" : "toupper(" + key + ") eq toupper('" + value + "')";
+                    str += (checksum > 0) ? " and toupper(" + prop + ") eq toupper('" + value + "')" : "toupper(" + prop + ") eq toupper('" + value + "')";
+                    checksum++;
+                }
+                else if(key.IndexOf("lt_")==0)
+                {
+                    prop = key.Substring(3);
+                    str += (checksum > 0) ? " and " + prop + " lt " + value : prop + " lt " + value;
+                    checksum++;
+                }
+                else if (key.IndexOf("gt_") == 0)
+                {
+                    prop = key.Substring(3);
+                    str += (checksum > 0) ? " and " + prop + " gt " + value : prop + " gt " + value;
                     checksum++;
                 }
                 else if (key.IndexOf("cq_") == 0)
