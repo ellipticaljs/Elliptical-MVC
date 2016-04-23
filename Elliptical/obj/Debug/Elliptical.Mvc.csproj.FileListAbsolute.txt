@@ -35,7 +35,6 @@
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\Antlr3.Runtime.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\Microsoft.Web.Infrastructure.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\Newtonsoft.Json.dll
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\RevStack.Mvc.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Mvc.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Optimization.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\WebGrease.dll

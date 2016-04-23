@@ -101,11 +101,14 @@
     <Compile Include="Configuration\BundleSection.cs" />
     <Compile Include="ActionResult\CookieActionResult.cs" />
     <Compile Include="ActionResult\CookieExtensions.cs" />
+    <Compile Include="Configuration\Settings.cs" />
     <Compile Include="HtmlHelpers\ActiveMenuItem.cs" />
     <Compile Include="HtmlHelpers\Extensions.cs" />
     <Compile Include="HtmlHelpers\Formatting.cs" />
     <Compile Include="HtmlHelpers\GoogleAnalytics.cs" />
     <Compile Include="HtmlHelpers\Helpers.cs" />
+    <Compile Include="HtmlHelpers\HtmlImport.cs" />
+    <Compile Include="HtmlHelpers\Meta.cs" />
     <Compile Include="HtmlHelpers\Properties.cs" />
     <Compile Include="HtmlHelpers\UIPagination.cs" />
     <Compile Include="HtmlHelpers\ViewData.cs" />
