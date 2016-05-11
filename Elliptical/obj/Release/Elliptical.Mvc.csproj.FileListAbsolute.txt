@@ -37,7 +37,6 @@
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\Microsoft.Spatial.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\Microsoft.Web.Infrastructure.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\Newtonsoft.Json.dll
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\RevStack.Mvc.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\RevStack.Pattern.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\System.Net.Http.Formatting.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\System.Web.Http.dll

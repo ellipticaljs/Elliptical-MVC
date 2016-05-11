@@ -102,8 +102,9 @@
     <Compile Include="ActionResult\CookieActionResult.cs" />
     <Compile Include="ActionResult\CookieExtensions.cs" />
     <Compile Include="Configuration\Settings.cs" />
+    <Compile Include="Extensions\Json.cs" />
     <Compile Include="HtmlHelpers\ActiveMenuItem.cs" />
-    <Compile Include="HtmlHelpers\Extensions.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="HtmlHelpers\Formatting.cs" />
     <Compile Include="HtmlHelpers\GoogleAnalytics.cs" />
     <Compile Include="HtmlHelpers\Helpers.cs" />
@@ -114,13 +115,13 @@
     <Compile Include="HtmlHelpers\ViewData.cs" />
     <Compile Include="OData\OData.cs" />
     <Compile Include="OData\ODataNavigation.cs" />
+    <Compile Include="UI\HtmlForm.cs" />
     <Compile Include="UI\HtmlTagBuilder.cs" />
     <Compile Include="ActionResult\ActiveMenuItemActionResult.cs" />
     <Compile Include="ActionResult\MenuExtensions.cs" />
     <Compile Include="UI\ComponentAttributes.cs" />
     <Compile Include="UI\CustomDataAnnotations.cs" />
     <Compile Include="UI\Enums.cs" />
-    <Compile Include="UI\Foms.cs" />
     <Compile Include="UI\IDisposableContainers.cs" />
     <Compile Include="UI\Internal.cs" />
     <Compile Include="UI\ModelValidation.cs" />
