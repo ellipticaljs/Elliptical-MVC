@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
-using System.Threading.Tasks;
 using System.Collections.Specialized;
 using System.Net;
 using System.Web.OData;
@@ -12,6 +10,7 @@ using System.Web.OData.Extensions;
 using System.Net.Http;
 using System.Web.OData.Builder;
 using RevStack.Pattern;
+using RevStack.Mvc;
 
 namespace Elliptical.Mvc
 {
@@ -131,7 +130,7 @@ namespace Elliptical.Mvc
         /// <param name="options"></param>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public ODataNavigation<TEntity> PageNavigation(IEnumerable<TEntity> query,TKey id, ODataQueryOptions options, ODataQuerySettings settings)
+        public EntityNavigation<TEntity> PageNavigation(IEnumerable<TEntity> query,TKey id, ODataQueryOptions options, ODataQuerySettings settings)
         {
             var context = new HttpContextWrapper(HttpContext.Current);
             var request = context.Request;
@@ -139,10 +138,10 @@ namespace Elliptical.Mvc
         }
 
         #region "Private"
-        private ODataNavigation<TEntity> getNavigation(IEnumerable<TEntity> query, TKey id, ODataQueryOptions options, ODataQuerySettings settings,NameValueCollection querystring)
+        private EntityNavigation<TEntity> getNavigation(IEnumerable<TEntity> query, TKey id, ODataQueryOptions options, ODataQuerySettings settings,NameValueCollection querystring)
         {
             var items = PageResult(query, options, settings);
-            var navigation = new ODataNavigation<TEntity>();
+            var navigation = new EntityNavigation<TEntity>();
             if (items != null)
             {
                 navigation.UrlQueryString = "?" + HttpUtility.ParseQueryString(querystring.ToString());
@@ -291,9 +290,14 @@ namespace Elliptical.Mvc
             string value = query["$orderBy"];
             if (!string.IsNullOrEmpty(value))
             {
+                if(value.IndexOf(".") > -1)
+                {
+                    value = getNestedQueryProps(value);
+                }
                 str = "$orderby=" + WebUtility.UrlEncode(value);
             }
             return str;
+
         }
 
         private string orderByDesc(NameValueCollection query)
@@ -302,6 +306,10 @@ namespace Elliptical.Mvc
             string value = query["$orderByDesc"];
             if (!string.IsNullOrEmpty(value))
             {
+                if (value.IndexOf(".") > -1)
+                {
+                    value = getNestedQueryProps(value);
+                }
                 str = "$orderby=" + WebUtility.UrlEncode(value) + " desc";
             }
             return str;
@@ -328,6 +336,12 @@ namespace Elliptical.Mvc
                 str = "$skip=" + value;
             }
             return str;
+        }
+
+        private string getNestedQueryProps(string nestedProp)
+        {
+            nestedProp = nestedProp.Replace(".", "/");
+            return nestedProp;
         }
 
         #endregion

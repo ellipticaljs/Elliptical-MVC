@@ -142,3 +142,4 @@
 \\psf\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\zh-Hans\Microsoft.Spatial.resources.dll
 \\psf\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\zh-Hant\Microsoft.Spatial.resources.dll
 \\psf\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\obj\Release\Elliptical.Mvc.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Release\RevStack.Mvc.dll

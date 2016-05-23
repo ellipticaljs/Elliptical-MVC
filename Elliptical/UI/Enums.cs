@@ -8,7 +8,7 @@
         Center
     }
 
-    public enum RadioGroupAlignment
+    /*public enum RadioGroupAlignment
     {
         Horizontal,
         Vertical
@@ -42,5 +42,5 @@
     {
         Value,
         Checked
-    }
+    }*/
 }
