@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.OData.Query;
 using RevStack.Pattern;
 using RevStack.Mvc;
+
 
 namespace Elliptical.Mvc
 {
@@ -20,6 +22,12 @@ namespace Elliptical.Mvc
             if (page.PrevItem != null) page.PrevPageLink = baseUrl + "/" + page.PrevItem.Id + page.UrlQueryString;
 
             return page;
+        }
+
+        protected virtual PagedEnumerable<TEntity> PagedEnumerable(IEnumerable<TEntity> query, string baseUrl, HttpRequestBase request, int pageSize, int? pageSpread)
+        {
+            var odata = new OData<TEntity, TKey>();
+            return odata.PageResult(query, baseUrl, request, pageSize, pageSpread);
         }
     }
 }

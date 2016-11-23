@@ -83,7 +83,6 @@
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\RevStack.Pattern.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Net.Http.Formatting.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Http.dll
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Mvc.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.OData.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Optimization.dll
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\WebGrease.dll
@@ -105,10 +104,7 @@
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Mvc.xml
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.OData.xml
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Optimization.xml
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\RevStack.Cryptography.pdb
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\RevStack.Cryptography.xml
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\MiscUtil.pdb
-\\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\MiscUtil.xml
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.Razor.xml
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.WebPages.Razor.xml
 \\Mac\Home\Documents\Development\mono\Elliptical\Elliptical\Elliptical\bin\Debug\System.Web.WebPages.xml

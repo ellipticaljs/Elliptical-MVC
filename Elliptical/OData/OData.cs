@@ -80,7 +80,7 @@ namespace Elliptical.Mvc
             string queryString = QueryStringMapper(request.QueryString);
             var baseUrl = new UriBuilder(request.Url.Scheme, request.Url.Host, request.Url.Port, request.Path);
             HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, baseUrl + queryString);
-            return getOptions(baseUrl.ToString(), queryString, req);
+            return getOptions(queryString, req);
         }
 
         /// <summary>
@@ -89,10 +89,10 @@ namespace Elliptical.Mvc
         /// <param name="baseUrl">protocol,host,path</param>
         /// <param name="queryString">proper odata formatted query string</param>
         /// <returns></returns>
-        public ODataQueryOptions ODataQueryOptions(string baseUrl,string queryString)
+        public ODataQueryOptions ODataQueryOptions(UriBuilder baseUrl,string queryString)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, baseUrl + queryString);
-            return getOptions(baseUrl, queryString, request);
+            return getOptions(queryString, request);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Elliptical.Mvc
             string queryString = QueryStringMapper(request.QueryString);
             var baseUrl = new UriBuilder(request.Url.Scheme, request.Url.Host, request.Url.Port, request.Path);
             HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, baseUrl + queryString);
-            return getOptions(baseUrl.ToString(), queryString, req);
+            return getOptions(queryString, req);
         }
 
         /// <summary>
@@ -120,6 +120,63 @@ namespace Elliptical.Mvc
             IQueryable q = options.ApplyTo(query.AsQueryable(), settings);
             var pagedResult = new PageResult<TEntity>(q as IQueryable<TEntity>, null, null);
             return pagedResult.Items;
+        }
+
+        /// <summary>
+        /// Returns an PagedEnumerable Object of an entity collection
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="options"></param>
+        /// <param name="settings"></param>
+        /// <returns></returns>
+        public PagedEnumerable<TEntity> PageResult(IEnumerable<TEntity> query,string baseUrl,HttpRequestBase request,int pageSize,int? pageSpread)
+        {
+            
+            var pagedEnumerable = new PagedEnumerable<TEntity>();
+            NameValueCollection queryString = request.QueryString;
+            var uri = new UriBuilder(request.Url.Scheme, request.Url.Host, request.Url.Port, baseUrl);
+            int currentPage = 1;
+            if(queryString["page"] !=null)
+            {
+                currentPage = Convert.ToInt32(queryString["page"]);
+            }
+            string odataQueryString = QueryStringMapper(queryString);
+            string strQueryString = PaginationUtility.QueryString(queryString);
+            var options = ODataQueryOptions(uri, odataQueryString);
+            var settings = new ODataQuerySettings();
+            IQueryable q = options.ApplyTo(query.AsQueryable(), settings);
+            var pagedResult = new PageResult<TEntity>(q as IQueryable<TEntity>,null,null);
+            var pagedItemsList = pagedResult.Items.ToList();
+            int count = pagedItemsList.Count();
+            pagedEnumerable.Items = pagedItemsList.ToPagedList(currentPage,pageSize);
+            pagedEnumerable.Count = count;
+            pagedEnumerable.PageSize = pageSize;
+            int pageCount = PaginationUtility.GetPageCount(count, pageSize);
+            pagedEnumerable.PageSpread = 0;
+            pagedEnumerable.CurrentPage = currentPage;
+            pagedEnumerable.PageCount = pageCount;
+            int intPageSpread;
+            if(count > pageSize)
+            {
+                if(pageCount > currentPage)
+                {
+                    pagedEnumerable.NextPageLink = baseUrl + strQueryString.ToPageQueryString(currentPage + 1);
+                }
+                if (pageSpread != null)
+                {
+                    intPageSpread = Convert.ToInt32(pageSpread);
+                    pagedEnumerable.PageSpread = intPageSpread;
+                    pagedEnumerable.PageItems = PaginationUtility.GeneratePages(baseUrl, currentPage, pageCount, pageSize, intPageSpread, strQueryString);
+
+                }
+                if(currentPage > 1)
+                {
+                    pagedEnumerable.PrevPageLink = baseUrl + strQueryString.ToPageQueryString(currentPage - 1);
+                }
+            }
+
+            return pagedEnumerable;
+
         }
 
         /// <summary>
@@ -152,7 +209,7 @@ namespace Elliptical.Mvc
 
             return navigation;
         }
-        private ODataQueryOptions getOptions(string baseUrl,string queryString,HttpRequestMessage request)
+        private ODataQueryOptions getOptions(string queryString,HttpRequestMessage request)
         {
             string type = _type.ToString();
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
@@ -161,6 +218,21 @@ namespace Elliptical.Mvc
             return new ODataQueryOptions<TEntity>(context, request);
         }
 
+        private string paginationFilter(string queryString,int page, int pageSize)
+        {
+            page=page-1;
+            int skip = page * pageSize;
+            string encodedPaginate = (skip > 0) ? "$skip=" + skip + "&$top=" + pageSize + "&$count=true" : "$top=" + pageSize + "&$count=true";
+            if(queryString.IndexOf("?") > -1)
+            {
+                queryString = queryString + "&";
+            }
+            else
+            {
+                queryString = queryString + "?";
+            }
+            return queryString + encodedPaginate;
+        }
 
         private string filter(NameValueCollection query)
         {

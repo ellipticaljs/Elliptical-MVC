@@ -124,5 +124,21 @@ namespace Elliptical.Mvc
             return target.GetType().GetProperty(me.Member.Name).GetValue(target, null);
 
         }
+
+        public static string ToPageQueryString(this string source, int page)
+        {
+            if (source == "" || source=="?")
+            {
+                return "?page=" + page;
+            }
+            else
+            {
+                if (source.IndexOf("?") != 0)
+                {
+                    source = "?" + source;
+                }
+                return source + "&page=" + page;
+            }
+        }
     }
 }
