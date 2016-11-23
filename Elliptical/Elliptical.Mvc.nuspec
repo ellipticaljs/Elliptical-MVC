@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Elliptical.Mvc</id>
+    <version>1.0.0</version>
+    <title>Elliptical.Mvc</title>
+    <authors>Scott Francis</authors>
+    <owners>S. Francis</owners>
+    <licenseUrl>https://github.com/ellipticaljs/Elliptical.Mvc/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ellipticaljs/Elliptical.Mvc.git</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Asp.Net MVC class library integration with elliptical front-end technologies.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2016 Managed Information Solutions, LLC</copyright>
+    <tags>Elliptical Mvc</tags>
+  </metadata>
+</package>
