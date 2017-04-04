@@ -1,6 +1,6 @@
 {
   "name": "Elliptical.Mvc",
-  "version": "0.9.1",
+  "version": "1.1.1",
   "description": "Asp.Net MVC class library for integration with elliptical front-end technologies",
   "main": "Elliptical.Mvc.sln",
   "scripts": {

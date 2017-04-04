@@ -165,7 +165,7 @@ namespace Elliptical.Mvc
                     var pageItem = new PageItem
                     {
                         Page = i + 1,
-                        Link = baseUrl + queryString.ToPageQueryString(page)
+                        Link = baseUrl + queryString.ToPageQueryString(i+1)
                     };
 
                     if (i == (page - 1))
@@ -196,7 +196,7 @@ namespace Elliptical.Mvc
                     var pageItem = new PageItem
                     {
                         Page = i + 1,
-                        Link = baseUrl + queryString.ToPageQueryString(page)
+                        Link = baseUrl + queryString.ToPageQueryString(i+1)
                     };
                     if (i == page)
                     {
