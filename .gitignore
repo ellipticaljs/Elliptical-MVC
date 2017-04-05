@@ -15,4 +15,5 @@ Mono/
 *.orig
 .vs/
 *.lock.json
+packages/
 nuget.exe
