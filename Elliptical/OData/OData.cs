@@ -240,6 +240,10 @@ namespace Elliptical.Mvc
             int checksum = 0;
             foreach (string key in query)
             {
+                if(string.IsNullOrEmpty(key))
+                {
+                    continue;
+                }
                 string value = WebUtility.UrlDecode(query[key]);
                 string prop;
                 if (key.IndexOf("sw_") == 0)
